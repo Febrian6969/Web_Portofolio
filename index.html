@@ -71,11 +71,12 @@
                 </a>
                 
                 <!-- Desktop Nav -->
-                <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                <div class="hidden md:flex items-center space-x-5 text-sm font-medium">
                     <a href="#about" class="hover:text-brand-400 transition-colors">About Me</a>
                     <a href="#education" class="hover:text-brand-400 transition-colors">Education</a>
                     <a href="#experience" class="hover:text-brand-400 transition-colors">Experience</a>
                     <a href="#projects" class="hover:text-brand-400 transition-colors">Projects</a>
+                    <a href="#english-assignments" class="hover:text-brand-400 transition-colors">English Assignments</a>
                     <a href="#skills" class="hover:text-brand-400 transition-colors">Skills</a>
                     <a href="#certificates" class="hover:text-brand-400 transition-colors">Training & Certs</a>
                     <a href="#contact" class="px-4 py-2 rounded-lg bg-brand-500 hover:bg-brand-600 text-white font-semibold transition-all shadow-md hover:shadow-brand-500/20">Contact</a>
@@ -96,6 +97,7 @@
             <a href="#education" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-800">Education</a>
             <a href="#experience" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-800">Experience</a>
             <a href="#projects" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-800">Projects</a>
+            <a href="#english-assignments" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-800">English Assignments</a>
             <a href="#skills" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-800">Skills</a>
             <a href="#certificates" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-800">Training & Certs</a>
             <a href="#contact" class="mobile-link block px-3 py-2 rounded-md text-base font-medium bg-brand-500 text-white text-center">Contact Me</a>
@@ -382,6 +384,120 @@
             </div>
         </div>
     </section>
+
+    <!-- English Assignments Section -->
+    <section id="english-assignments" class="py-20 bg-dark-card/30 border-t border-dark-border">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-indigo-400 tracking-tight">
+                    English Assignments
+                </h2>
+                <p class="text-gray-400 mt-3 text-sm sm:text-base">
+                    A collection of English language assignments and learning activities.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Card 1: PDF Document (Ujian Tengah Semester Part A) -->
+                <div onclick="openPdfModal()" class="cursor-pointer rounded-2xl bg-[#111827] border border-dark-border hover:border-brand-500/60 overflow-hidden shadow-lg hover:shadow-brand-500/10 transition-all duration-300 group flex flex-col">
+                    <!-- Top Light/White Thumbnail Area matching reference -->
+                    <div class="relative h-56 bg-gradient-to-b from-white to-gray-200 flex items-center justify-center overflow-hidden">
+                        <div class="relative flex flex-col items-center justify-center transform group-hover:scale-105 transition-transform duration-300">
+                            <i class="fa-regular fa-file-lines text-8xl text-gray-800"></i>
+                            <span class="absolute -left-4 bottom-4 px-3 py-1 rounded-md bg-red-600 text-white font-extrabold text-lg tracking-wider shadow-md">
+                                PDF
+                            </span>
+                        </div>
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                            <span class="opacity-0 group-hover:opacity-100 transition-opacity px-4 py-2 rounded-full bg-gray-900/90 text-white text-xs font-semibold flex items-center gap-2 shadow-lg">
+                                <i class="fa-solid fa-eye text-brand-400"></i> Preview Document
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Bottom Dark Caption Area -->
+                    <div class="p-5 bg-[#0f1623] border-t border-dark-border flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base sm:text-lg font-bold text-white uppercase tracking-wide group-hover:text-brand-400 transition-colors">
+                                Ujian Tengah Semester (Part A)
+                            </h3>
+                            <p class="text-xs text-gray-400 mt-1">PDF Document • English Midterm Examination</p>
+                        </div>
+                        <div class="mt-4 flex items-center justify-between text-xs text-brand-400 font-medium">
+                            <span>Click to view PDF</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: YouTube Video (Ujian Tengah Semester Part B) -->
+                <div class="rounded-2xl bg-[#111827] border border-dark-border hover:border-brand-500/60 overflow-hidden shadow-lg hover:shadow-brand-500/10 transition-all duration-300 group flex flex-col">
+                    <!-- Top Embedded YouTube Player -->
+                    <div class="relative h-56 bg-black overflow-hidden">
+                        <iframe 
+                            class="w-full h-full"
+                            src="https://www.youtube.com/embed/3ndF7rIrMuc?si=dcIhVjYspXCLSmXl" 
+                            title="Ujian Tengah Semester (Part B)" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <!-- Bottom Dark Caption Area -->
+                    <div class="p-5 bg-[#0f1623] border-t border-dark-border flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base sm:text-lg font-bold text-white uppercase tracking-wide group-hover:text-brand-400 transition-colors">
+                                Ujian Tengah Semester (Part B)
+                            </h3>
+                            <p class="text-xs text-gray-400 mt-1">Video Presentation • English Midterm Examination</p>
+                        </div>
+                        <div class="mt-4 flex items-center justify-between">
+                            <span class="text-xs text-gray-400 flex items-center gap-1.5">
+                                <i class="fa-brands fa-youtube text-red-500 text-sm"></i> YouTube Video
+                            </span>
+                            <a href="https://youtu.be/3ndF7rIrMuc?si=dcIhVjYspXCLSmXl" target="_blank" rel="noopener noreferrer" class="text-xs text-brand-400 hover:text-brand-300 font-semibold flex items-center gap-1">
+                                Open in YouTube <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PDF Viewer Modal for Ujian Tengah Semester (Part A) -->
+    <div id="pdf-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+        <div class="bg-dark-card border border-dark-border rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl animate-fadeIn">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-dark-border bg-gray-900">
+                <div class="flex items-center gap-3">
+                    <span class="px-2.5 py-1 rounded bg-red-600 text-white text-xs font-bold">PDF</span>
+                    <h3 class="text-base sm:text-lg font-bold text-white">Ujian Tengah Semester (Part A)</h3>
+                </div>
+                <button onclick="closePdfModal()" class="w-8 h-8 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-6 bg-gray-950/60">
+                <!-- Embedded PDF Preview Container (Replace src with your hosted PDF URL if needed) -->
+                <div class="w-full h-80 sm:h-96 rounded-xl border border-dark-border bg-gray-900 flex flex-col items-center justify-center text-center p-6">
+                    <div class="w-16 h-16 rounded-2xl bg-red-500/10 text-red-500 flex items-center justify-center text-3xl mb-4">
+                        <i class="fa-solid fa-file-pdf"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Ujian Tengah Semester (Part A)</h4>
+                    <p class="text-sm text-gray-400 max-w-md mt-2">
+                        English Midterm Written Examination Document — Muhammad Arif Febrian (2300018274).
+                    </p>
+                    <p class="text-xs text-gray-500 mt-4">
+                        Tip: To link your local or Google Drive PDF file directly, update the <code class="text-brand-400">href</code> attribute on the button below.
+                    </p>
+                    <div class="mt-6 flex flex-wrap justify-center gap-3">
+                        <a id="pdf-external-link" href="#english-assignments" onclick="closePdfModal(); showToast('Ready to link your PDF file URL!')" class="px-5 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-file-arrow-down"></i> Done / Close Preview
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Skills Section -->
     <section id="skills" class="py-20 bg-dark-card/50 border-y border-dark-border">
@@ -703,6 +819,26 @@
                 toast.classList.add('translate-y-20', 'opacity-0');
             }, 3000);
         }
+
+        // PDF Modal Controls
+        function openPdfModal() {
+            const modal = document.getElementById('pdf-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closePdfModal() {
+            const modal = document.getElementById('pdf-modal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        // Close modal when clicking outside dialog
+        document.getElementById('pdf-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePdfModal();
+            }
+        });
     </script>
 </body>
 </html>
