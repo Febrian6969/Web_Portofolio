@@ -1,39 +1,23 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Arif Febrian - Portfolio & CV</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
                     },
                     colors: {
-                        brand: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            400: '#38bdf8',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            900: '#0c4a6e',
-                        },
-                        dark: {
-                            bg: '#0b0f17',
-                            card: '#111827',
-                            border: '#1f2937',
-                        }
+                        dark: '#0B1120',
+                        card: '#111827',
+                        accent: '#38BDF8',
                     }
                 }
             }
@@ -41,864 +25,617 @@
     </script>
     <style>
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #0b0f17;
-            color: #f3f4f6;
+            background-color: #0B1120;
+            color: #F8FAFC;
+            overflow-x: hidden;
         }
-        .glow-effect {
-            box-shadow: 0 0 25px -5px rgba(14, 165, 233, 0.25);
+        .glass-nav {
+            background: rgba(11, 17, 32, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
-        .glow-text {
-            text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        .card-hover {
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
         }
-        .bg-grid {
-            background-size: 30px 30px;
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        .card-hover:hover {
+            transform: translateY(-4px);
+            border-color: rgba(56, 189, 248, 0.45);
+            box-shadow: 0 12px 30px -10px rgba(56, 189, 248, 0.18);
+        }
+        /* Memastikan modal benar-benar tersembunyi saat awal dibuka */
+        #pdfModal.hidden {
+            display: none !important;
+        }
+        #pdfModal:not(.hidden) {
+            display: flex !important;
         }
     </style>
 </head>
-<body class="bg-dark-bg text-gray-200 antialiased selection:bg-brand-500 selection:text-white">
+<body class="antialiased selection:bg-sky-500 selection:text-white">
 
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-dark-bg/80 backdrop-blur-md border-b border-dark-border">
+    <header class="fixed top-0 left-0 right-0 z-40 glass-nav">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <a href="#hero" class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
-                    <span class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center text-white font-black text-sm">AF</span>
-                    <span>Arif<span class="text-brand-400">Febrian</span></span>
+                <a href="#home" class="text-lg font-extrabold tracking-tight text-white flex items-center gap-2">
+                    <span class="w-8 h-8 rounded-lg bg-sky-500/20 border border-sky-400/40 flex items-center justify-center text-sky-400 text-sm">AF</span>
+                    <span>Arif<span class="text-sky-400">.dev</span></span>
                 </a>
-                
-                <!-- Desktop Nav -->
-                <div class="hidden md:flex items-center space-x-5 text-sm font-medium">
-                    <a href="#about" class="hover:text-brand-400 transition-colors">About Me</a>
-                    <a href="#education" class="hover:text-brand-400 transition-colors">Education</a>
-                    <a href="#experience" class="hover:text-brand-400 transition-colors">Experience</a>
-                    <a href="#projects" class="hover:text-brand-400 transition-colors">Projects</a>
-                    <a href="#english-assignments" class="hover:text-brand-400 transition-colors">English Assignments</a>
-                    <a href="#skills" class="hover:text-brand-400 transition-colors">Skills</a>
-                    <a href="#certificates" class="hover:text-brand-400 transition-colors">Training & Certs</a>
-                    <a href="#contact" class="px-4 py-2 rounded-lg bg-brand-500 hover:bg-brand-600 text-white font-semibold transition-all shadow-md hover:shadow-brand-500/20">Contact</a>
-                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
+                    <a href="#about" class="hover:text-sky-400 transition">About</a>
+                    <a href="#experience" class="hover:text-sky-400 transition">Experience</a>
+                    <a href="#projects" class="hover:text-sky-400 transition">Projects</a>
+                    <a href="#skills" class="hover:text-sky-400 transition">Skills</a>
+                    <a href="#certificates" class="hover:text-sky-400 transition">Certificates</a>
+                    <a href="#assignments" class="text-sky-400 font-semibold hover:text-sky-300 transition">English Assignments</a>
+                </nav>
 
                 <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none">
-                        <i class="fa-solid fa-bars text-xl"></i>
-                    </button>
-                </div>
+                <button id="mobileMenuBtn" type="button" class="md:hidden text-slate-300 hover:text-white p-2 focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
             </div>
         </div>
 
-        <!-- Mobile Nav Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-dark-card border-b border-dark-border px-4 pt-2 pb-4 space-y-2">
-            <a href="#about" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-800">About</a>
-            <a href="#education" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-800">Education</a>
-            <a href="#experience" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-800">Experience</a>
-            <a href="#projects" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-800">Projects</a>
-            <a href="#english-assignments" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-800">English Assignments</a>
-            <a href="#skills" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-800">Skills</a>
-            <a href="#certificates" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-800">Training & Certs</a>
-            <a href="#contact" class="mobile-link block px-3 py-2 rounded-md text-base font-medium bg-brand-500 text-white text-center">Contact Me</a>
+        <!-- Mobile Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-slate-900/95 border-b border-slate-800 px-4 pt-2 pb-4 space-y-2 text-sm font-medium">
+            <a href="#about" class="block py-2 text-slate-300 hover:text-sky-400">About</a>
+            <a href="#experience" class="block py-2 text-slate-300 hover:text-sky-400">Experience</a>
+            <a href="#projects" class="block py-2 text-slate-300 hover:text-sky-400">Projects</a>
+            <a href="#skills" class="block py-2 text-slate-300 hover:text-sky-400">Skills</a>
+            <a href="#certificates" class="block py-2 text-slate-300 hover:text-sky-400">Certificates</a>
+            <a href="#assignments" class="block py-2 text-sky-400 font-semibold">English Assignments</a>
         </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-grid overflow-hidden">
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
-        
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs sm:text-sm font-semibold mb-6">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                Informatics Student (Semester 7) @ Universitas Ahmad Dahlan
+    <section id="home" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-900/25 via-slate-950 to-slate-950"></div>
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-400/25 text-sky-400 text-xs font-semibold mb-6">
+                <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+                7th Semester Informatics Student • Universitas Ahmad Dahlan
             </div>
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
-                Hello, I'm <br class="hidden sm:inline" />
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-cyan-300">Muhammad Arif Febrian</span>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-5">
+                Muhammad Arif <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-400">Febrian</span>
             </h1>
-            
-            <!-- Life Motto -->
-            <div class="mt-6 p-4 rounded-xl bg-dark-card/60 border border-dark-border italic text-gray-300 border-l-4 border-l-brand-500 max-w-xl mx-auto text-left sm:text-center">
-                <p class="text-sm sm:text-base">"<span id="motto-text">Strive for the best, be grateful for any outcome</span>"</p>
-                <span class="text-xs text-brand-400 font-semibold not-italic block mt-1">— Life Motto</span>
-            </div>
-
-            <p class="mt-6 text-gray-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-                An adaptable Informatics undergraduate at the Faculty of Industrial Technology, Universitas Ahmad Dahlan, focusing on web development, hardware maintenance, and data management.
+            <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed mb-6">
+                Informatics Engineering student focused on Backend Web Development, Database Design, and Technical IT Operations.
             </p>
+            <blockquote class="italic text-slate-400 text-sm sm:text-base max-w-xl mx-auto mb-8 border-l-2 border-sky-500 pl-4 text-left sm:text-center sm:border-l-0">
+                "Give your best effort, and be grateful for whatever the outcome may be."
+            </blockquote>
 
-            <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-                <a href="#contact" class="px-6 py-3 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-semibold transition-all flex items-center gap-2 glow-effect">
-                    <i class="fa-solid fa-envelope"></i> Contact Me
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <a href="mailto:2300018274@webmail.uad.ac.id" class="px-6 py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition flex items-center gap-2 shadow-lg shadow-sky-500/20">
+                    <i class="fas fa-envelope"></i> Email Me
                 </a>
-                <a href="https://wa.me/6281578226855" target="_blank" class="px-6 py-3 rounded-xl bg-gray-800 hover:bg-gray-700 text-white font-semibold border border-gray-700 transition-all flex items-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-emerald-400 text-lg"></i> WhatsApp
+                <a href="https://wa.me/6281578226855" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 text-white font-semibold text-sm transition flex items-center gap-2">
+                    <i class="fab fa-whatsapp text-emerald-400 text-base"></i> +62 815-7822-6855
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- About Me & Bio Section -->
-    <section id="about" class="py-20 bg-dark-card/50 border-y border-dark-border">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-14">
-                <h2 class="text-3xl font-bold text-white tracking-tight">About Me</h2>
-                <div class="w-16 h-1 bg-brand-500 mx-auto mt-3 rounded-full"></div>
-                <p class="text-gray-400 mt-3 text-sm sm:text-base">A brief professional profile, academic details, and direct contact info.</p>
+    <!-- About & Academic Profile -->
+    <section id="about" class="py-16 px-4 sm:px-6 lg:px-8 border-t border-slate-800/70">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">About Me</h2>
+                <p class="text-slate-400 text-sm mt-2">Academic profile and personal background</p>
             </div>
 
-            <!-- About Me Paragraph -->
-            <div class="p-8 rounded-3xl bg-dark-card border border-dark-border mb-10 relative overflow-hidden glow-effect">
-                <div class="flex items-center gap-3 text-brand-400 mb-4">
-                    <i class="fa-solid fa-user-gear text-2xl"></i>
-                    <h3 class="text-xl font-bold text-white">Professional Profile</h3>
-                </div>
-                <p class="text-gray-300 leading-relaxed text-base sm:text-lg">
-                    I am an active 7th-semester student pursuing a Bachelor's degree in Computer Science / Informatics at the Faculty of Industrial Technology, Universitas Ahmad Dahlan (UAD). With hands-on internship experience in hardware troubleshooting, software/OS installation, data verification, and collaborative web application projects (such as the UAD E-Learning Platform and Dusun Pripih Website), I possess a solid foundation in computer engineering and software fundamentals. I am dedicated to continuously sharpening my programming expertise and problem-solving skills in technology-driven environments.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Card 1: Academic Status -->
-                <div class="p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-brand-500/40 transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
-                    <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider">Academic Status</h3>
-                    <p class="text-lg font-bold text-white mt-1">Active Student (Semester 7)</p>
-                    <p class="text-xs text-gray-400 mt-1">B.Sc. Informatics, Faculty of Industrial Technology</p>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2 bg-slate-900/70 border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-center">
+                    <h3 class="text-lg font-bold text-sky-400 mb-3">Who I Am</h3>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-4">
+                        I am a 7th-semester Informatics student in the Faculty of Industrial Technology at Universitas Ahmad Dahlan. I combine practical experience in computer hardware troubleshooting and software installation with backend web development using PHP, SQL, and RESTful APIs.
+                    </p>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Through academic teamwork and hands-on industry internships, I have developed strong problem-solving habits, structured data verification accuracy, and reliable self-management.
+                    </p>
                 </div>
 
-                <!-- Card 2: Institution -->
-                <div class="p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-brand-500/40 transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4">
-                        <i class="fa-solid fa-university"></i>
+                <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4">
+                    <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-3">Student Info</h3>
+                    <div>
+                        <p class="text-xs text-slate-400 uppercase tracking-wider">University</p>
+                        <p class="text-sm font-semibold text-slate-200 mt-0.5">Universitas Ahmad Dahlan</p>
                     </div>
-                    <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider">University</h3>
-                    <p class="text-lg font-bold text-white mt-1">Universitas Ahmad Dahlan</p>
-                    <p class="text-xs text-gray-400 mt-1">Student ID: 2300018274</p>
-                </div>
-
-                <!-- Card 3: Direct Contact -->
-                <div class="p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-brand-500/40 transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-xl mb-4">
-                        <i class="fa-solid fa-address-book"></i>
+                    <div>
+                        <p class="text-xs text-slate-400 uppercase tracking-wider">Faculty & Major</p>
+                        <p class="text-sm font-semibold text-slate-200 mt-0.5">Industrial Technology — Informatics</p>
                     </div>
-                    <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider">Direct Contact</h3>
-                    <div class="mt-2 space-y-1">
-                        <p class="text-sm text-white font-medium"><i class="fa-solid fa-envelope text-brand-400 mr-2"></i> 2300018274@webmail.uad.ac.id</p>
-                        <p class="text-sm text-white font-medium"><i class="fa-solid fa-phone text-emerald-400 mr-2"></i> +62 815-7822-6855</p>
+                    <div>
+                        <p class="text-xs text-slate-400 uppercase tracking-wider">Academic Status</p>
+                        <p class="text-sm font-semibold text-sky-400 mt-0.5">Active Student (Semester 7)</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400 uppercase tracking-wider">Contact Email</p>
+                        <p class="text-sm font-medium text-slate-200 mt-0.5 break-all">2300018274@webmail.uad.ac.id</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Education Section -->
-    <section id="education" class="py-20">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold text-white tracking-tight">Education</h2>
-                <div class="w-16 h-1 bg-brand-500 mx-auto mt-3 rounded-full"></div>
-                <p class="text-gray-400 mt-3 text-sm sm:text-base">Formal educational background from primary to higher education.</p>
-            </div>
-
-            <div class="max-w-3xl mx-auto relative border-l-2 border-dark-border pl-6 sm:pl-8 space-y-10 ml-4 sm:ml-auto">
-                <!-- Level 4: University -->
-                <div class="relative group">
-                    <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-6 h-6 rounded-full bg-brand-500 border-4 border-dark-bg group-hover:scale-125 transition-transform"></div>
-                    <div class="p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-brand-500/50 transition-all">
-                        <span class="px-3 py-1 text-xs font-semibold rounded-md bg-brand-500/10 text-brand-400 border border-brand-500/20">Present (Active Student)</span>
-                        <h3 class="text-xl font-bold text-white mt-3">Universitas Ahmad Dahlan (UAD)</h3>
-                        <p class="text-brand-400 font-medium text-sm">B.Sc. Informatics - Faculty of Industrial Technology</p>
-                        <p class="text-gray-400 text-sm mt-2">Focused on computer science core, software engineering, algorithms, and modern IT frameworks.</p>
-                    </div>
-                </div>
-
-                <!-- Level 3: Vocational High School -->
-                <div class="relative group">
-                    <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-6 h-6 rounded-full bg-gray-600 border-4 border-dark-bg group-hover:bg-brand-500 transition-colors"></div>
-                    <div class="p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-brand-500/50 transition-all">
-                        <h3 class="text-lg font-bold text-white">SMK Muhammadiyah 1 Temon</h3>
-                        <p class="text-gray-400 text-sm mt-1">Vocational High School Degree</p>
-                    </div>
-                </div>
-
-                <!-- Level 2: Junior High School -->
-                <div class="relative group">
-                    <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-6 h-6 rounded-full bg-gray-600 border-4 border-dark-bg group-hover:bg-brand-500 transition-colors"></div>
-                    <div class="p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-brand-500/50 transition-all">
-                        <h3 class="text-lg font-bold text-white">SMP Negeri 2 Temon</h3>
-                        <p class="text-gray-400 text-sm mt-1">Junior High School Degree</p>
-                    </div>
-                </div>
-
-                <!-- Level 1: Elementary School -->
-                <div class="relative group">
-                    <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-6 h-6 rounded-full bg-gray-600 border-4 border-dark-bg group-hover:bg-brand-500 transition-colors"></div>
-                    <div class="p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-brand-500/50 transition-all">
-                        <h3 class="text-lg font-bold text-white">SD Negeri Jangkaran</h3>
-                        <p class="text-gray-400 text-sm mt-1">Elementary School Degree</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience / Internship Section -->
-    <section id="experience" class="py-20 bg-dark-card/50 border-y border-dark-border">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold text-white tracking-tight">Work & Internship Experience</h2>
-                <div class="w-16 h-1 bg-brand-500 mx-auto mt-3 rounded-full"></div>
-                <p class="text-gray-400 mt-3 text-sm sm:text-base">Practical field experience in hardware technical service, data management, and customer operations.</p>
-            </div>
-
-            <div class="max-w-4xl mx-auto">
-                <div class="p-8 rounded-3xl bg-dark-card border border-dark-border relative overflow-hidden glow-effect">
-                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-brand-500/10 rounded-full blur-2xl"></div>
-                    
-                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-dark-border pb-6">
-                        <div>
-                            <span class="px-3 py-1 rounded-md text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">Industry Internship</span>
-                            <h3 class="text-2xl font-bold text-white mt-2">Pitstop Computer Yogyakarta</h3>
-                            <p class="text-brand-400 font-medium">Hardware & Software Specialist / Operations & Data Processing</p>
-                        </div>
-                        <div class="text-left md:text-right">
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-800 text-gray-300 text-xs font-medium">
-                                <i class="fa-regular fa-calendar-check text-brand-400"></i>
-                                Jan 22, 2022 – Aug 13, 2022
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="mt-6">
-                        <h4 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-4">Key Responsibilities & Achievements:</h4>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div class="p-4 rounded-xl bg-gray-900/60 border border-dark-border flex items-start gap-3">
-                                <div class="w-8 h-8 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center shrink-0 mt-0.5">
-                                    <i class="fa-solid fa-screws-all"></i>
-                                </div>
-                                <div>
-                                    <h5 class="text-sm font-bold text-white">Hardware Maintenance & OS Installation</h5>
-                                    <p class="text-xs text-gray-400 mt-1">Performed hardware repairs and system software/OS installations for laptop and desktop units.</p>
-                                </div>
-                            </div>
-
-                            <div class="p-4 rounded-xl bg-gray-900/60 border border-dark-border flex items-start gap-3">
-                                <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
-                                    <i class="fa-solid fa-boxes-packing"></i>
-                                </div>
-                                <div>
-                                    <h5 class="text-sm font-bold text-white">Inventory & Data Processing</h5>
-                                    <p class="text-xs text-gray-400 mt-1">Managed inventory data entries and conducted thorough quality checks for incoming components.</p>
-                                </div>
-                            </div>
-
-                            <div class="p-4 rounded-xl bg-gray-900/60 border border-dark-border flex items-start gap-3">
-                                <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0 mt-0.5">
-                                    <i class="fa-solid fa-file-circle-check"></i>
-                                </div>
-                                <div>
-                                    <h5 class="text-sm font-bold text-white">Verification & Data Logging</h5>
-                                    <p class="text-xs text-gray-400 mt-1">Executed systematic record-keeping and component verification for technical service logs.</p>
-                                </div>
-                            </div>
-
-                            <div class="p-4 rounded-xl bg-gray-900/60 border border-dark-border flex items-start gap-3">
-                                <div class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center shrink-0 mt-0.5">
-                                    <i class="fa-solid fa-store"></i>
-                                </div>
-                                <div>
-                                    <h5 class="text-sm font-bold text-white">Sales & Customer Operations</h5>
-                                    <p class="text-xs text-gray-400 mt-1">Handled sales transactions, customer inquiries, and purchasing workflows for tech products.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-20">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold text-white tracking-tight">Featured Projects</h2>
-                <div class="w-16 h-1 bg-brand-500 mx-auto mt-3 rounded-full"></div>
-                <p class="text-gray-400 mt-3 text-sm sm:text-base">Highlighting collaborative software development and web applications built during academic courses.</p>
+    <!-- Education & Internship Experience -->
+    <section id="experience" class="py-16 px-4 sm:px-6 lg:px-8 border-t border-slate-800/70 bg-slate-950/50">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Education & Experience</h2>
+                <p class="text-slate-400 text-sm mt-2">Academic track record and industry internship</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Project 1 -->
-                <div class="p-6 rounded-3xl bg-dark-card border border-dark-border hover:border-brand-500/50 transition-all flex flex-col justify-between group">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 rounded-2xl bg-brand-500/10 text-brand-400 flex items-center justify-center text-2xl group-hover:bg-brand-500 group-hover:text-white transition-all">
-                                <i class="fa-solid fa-laptop-code"></i>
-                            </div>
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-800 text-gray-300 border border-gray-700">Group Project</span>
+                <!-- Education -->
+                <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 sm:p-7">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-sky-500/15 text-sky-400 flex items-center justify-center">
+                            <i class="fas fa-graduation-cap"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white group-hover:text-brand-400 transition-colors">UAD E-Learning Web Application</h3>
-                        <p class="text-gray-400 text-sm mt-3 leading-relaxed">
-                            Designed and developed an interactive web-based e-learning platform prototype to facilitate online learning and assignment management for students and faculty.
-                        </p>
+                        <h3 class="text-xl font-bold text-white">Education</h3>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-dark-border flex items-center justify-between">
-                        <div class="flex gap-2">
-                            <span class="text-[11px] px-2.5 py-1 rounded-md bg-gray-800 text-gray-300">Web App</span>
-                            <span class="text-[11px] px-2.5 py-1 rounded-md bg-gray-800 text-gray-300">Education</span>
+
+                    <div class="space-y-5 border-l-2 border-slate-800 ml-3 pl-5">
+                        <div class="relative">
+                            <span class="w-3 h-3 rounded-full bg-sky-400 absolute -left-[27px] top-1.5"></span>
+                            <span class="text-xs font-semibold text-sky-400">2023 – Present (Semester 7)</span>
+                            <h4 class="text-base font-bold text-white mt-0.5">Universitas Ahmad Dahlan</h4>
+                            <p class="text-xs text-slate-400">Bachelor of Informatics — Faculty of Industrial Technology</p>
                         </div>
-                        <span class="text-xs text-brand-400 font-semibold flex items-center gap-1">
-                            Team Project <i class="fa-solid fa-users text-xs"></i>
-                        </span>
+                        <div class="relative">
+                            <span class="w-3 h-3 rounded-full bg-slate-600 absolute -left-[27px] top-1.5"></span>
+                            <h4 class="text-base font-bold text-slate-200">SMK Muhammadiyah 1 Temon</h4>
+                            <p class="text-xs text-slate-400">Vocational High School</p>
+                        </div>
+                        <div class="relative">
+                            <span class="w-3 h-3 rounded-full bg-slate-600 absolute -left-[27px] top-1.5"></span>
+                            <h4 class="text-base font-bold text-slate-200">SMP Negeri 2 Temon</h4>
+                            <p class="text-xs text-slate-400">Junior High School</p>
+                        </div>
+                        <div class="relative">
+                            <span class="w-3 h-3 rounded-full bg-slate-600 absolute -left-[27px] top-1.5"></span>
+                            <h4 class="text-base font-bold text-slate-200">SD Negeri Jangkaran</h4>
+                            <p class="text-xs text-slate-400">Elementary School</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="p-6 rounded-3xl bg-dark-card border border-dark-border hover:border-brand-500/50 transition-all flex flex-col justify-between group">
+                <!-- Internship -->
+                <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 sm:p-7">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Internship Experience</h3>
+                    </div>
+
+                    <div class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-5">
+                        <span class="inline-block px-2.5 py-1 rounded-md bg-indigo-500/15 text-indigo-300 text-xs font-semibold mb-2">
+                            Jan 22, 2022 – Aug 13, 2022
+                        </span>
+                        <h4 class="text-lg font-bold text-white">Pitstop Computer Yogyakarta</h4>
+                        <p class="text-xs text-sky-400 font-medium mb-4">IT Technician & Operations Intern</p>
+
+                        <ul class="space-y-2.5 text-sm text-slate-300">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-sky-400 mt-1 text-xs"></i>
+                                <span>Performed laptop hardware repairs and installed operating systems and essential software applications.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-sky-400 mt-1 text-xs"></i>
+                                <span>Conducted data processing, inventory checking, and inbound stock verification.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-sky-400 mt-1 text-xs"></i>
+                                <span>Assisted with product sales, purchasing operations, and customer marketing activities.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-16 px-4 sm:px-6 lg:px-8 border-t border-slate-800/70">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Projects & Works</h2>
+                <p class="text-slate-400 text-sm mt-2">Collaborative academic and community software projects</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 card-hover flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl group-hover:bg-cyan-500 group-hover:text-white transition-all">
-                                <i class="fa-solid fa-globe"></i>
-                            </div>
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-800 text-gray-300 border border-gray-700">Group Project</span>
+                            <span class="px-3 py-1 rounded-full bg-sky-500/15 text-sky-400 text-xs font-semibold">Team Project</span>
+                            <i class="fas fa-laptop-code text-slate-500 text-lg"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">Dusun Pripih Information Website</h3>
-                        <p class="text-gray-400 text-sm mt-3 leading-relaxed">
-                            Created a responsive community website for Dusun Pripih to publish local profiles, public announcements, and community development initiatives.
+                        <h3 class="text-xl font-bold text-white mb-2">UAD E-Learning Application Development</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                            Collaborative development of an academic e-learning platform to support digital course management and learning workflows at Universitas Ahmad Dahlan.
                         </p>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-dark-border flex items-center justify-between">
-                        <div class="flex gap-2">
-                            <span class="text-[11px] px-2.5 py-1 rounded-md bg-gray-800 text-gray-300">Profile Website</span>
-                            <span class="text-[11px] px-2.5 py-1 rounded-md bg-gray-800 text-gray-300">Public Info</span>
-                        </div>
-                        <span class="text-xs text-cyan-400 font-semibold flex items-center gap-1">
-                            Team Project <i class="fa-solid fa-users text-xs"></i>
-                        </span>
+                    <div class="flex flex-wrap gap-2 pt-3 border-t border-slate-800/80">
+                        <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300">Web App</span>
+                        <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300">System Design</span>
+                        <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300">Team Collaboration</span>
                     </div>
+                </div>
+
+                <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-400 text-xs font-semibold">Team Project</span>
+                            <i class="fas fa-globe text-slate-500 text-lg"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Dusun Pripih Website</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                            Built a dynamic community information website featuring backend PHP logic, SQL database integration, admin authentication, MSME catalogs, and citizen complaint tracking.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-3 border-t border-slate-800/80">
+                        <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300">PHP</span>
+                        <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300">SQL</span>
+                        <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300">REST API</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="py-16 px-4 sm:px-6 lg:px-8 border-t border-slate-800/70 bg-slate-950/50">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Skills & Expertise</h2>
+                <p class="text-slate-400 text-sm mt-2">Programming stack, technical capabilities, and soft skills</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Coding Skills -->
+                <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 sm:p-7">
+                    <h3 class="text-lg font-bold text-white mb-5 flex items-center gap-2">
+                        <i class="fas fa-code text-sky-400"></i> Programming & Web Development
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1.5">
+                                <span class="text-slate-200">HTML5 & CSS3</span>
+                                <span class="text-sky-400">85%</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2">
+                                <div class="bg-sky-400 h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1.5">
+                                <span class="text-slate-200">PHP & Backend Logic</span>
+                                <span class="text-sky-400">80%</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2">
+                                <div class="bg-sky-400 h-2 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1.5">
+                                <span class="text-slate-200">SQL & Relational Databases</span>
+                                <span class="text-sky-400">80%</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2">
+                                <div class="bg-sky-400 h-2 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1.5">
+                                <span class="text-slate-200">JavaScript & C++</span>
+                                <span class="text-sky-400">75%</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2">
+                                <div class="bg-sky-400 h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1.5">
+                                <span class="text-slate-200">Git & GitHub Version Control</span>
+                                <span class="text-sky-400">78%</span>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2">
+                                <div class="bg-sky-400 h-2 rounded-full" style="width: 78%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- General & Core Skills -->
+                <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 sm:p-7">
+                    <h3 class="text-lg font-bold text-white mb-5 flex items-center gap-2">
+                        <i class="fas fa-tools text-indigo-400"></i> Core & Professional Skills
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                        <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800">
+                            <i class="fas fa-lightbulb text-amber-400 mb-2"></i>
+                            <h4 class="text-sm font-bold text-white">Problem Solving</h4>
+                            <p class="text-xs text-slate-400 mt-1">Analytical debugging and structured technical troubleshooting.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800">
+                            <i class="fas fa-file-word text-sky-400 mb-2"></i>
+                            <h4 class="text-sm font-bold text-white">Microsoft Office</h4>
+                            <p class="text-xs text-slate-400 mt-1">Proficient in Word, Excel, and PowerPoint documentation.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800">
+                            <i class="fas fa-sync-alt text-emerald-400 mb-2"></i>
+                            <h4 class="text-sm font-bold text-white">Adaptability</h4>
+                            <p class="text-xs text-slate-400 mt-1">Quick adjustment to new tools and team environments.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800">
+                            <i class="fas fa-user-check text-purple-400 mb-2"></i>
+                            <h4 class="text-sm font-bold text-white">Self-Management</h4>
+                            <p class="text-xs text-slate-400 mt-1">Disciplined time planning and task accountability.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seminars, Training & Certifications -->
+    <section id="certificates" class="py-16 px-4 sm:px-6 lg:px-8 border-t border-slate-800/70">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Seminars, Training & Certifications</h2>
+                <p class="text-slate-400 text-sm mt-2">Academic workshops and university certifications</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-6">
+                    <h3 class="text-base font-bold text-sky-400 uppercase tracking-wider mb-4">Seminars & Webinars</h3>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="p-3 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                            <span class="text-xs text-sky-400 font-semibold block">2026</span>
+                            Information Literacy Training: Microsoft Word Optimization & Similarity Check — UAD Library
+                        </li>
+                        <li class="p-3 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                            <span class="text-xs text-sky-400 font-semibold block">2024</span>
+                            Business Plan Seminar — Next Gen Entrepreneurship Competition #2
+                        </li>
+                        <li class="p-3 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                            <span class="text-xs text-sky-400 font-semibold block">2024</span>
+                            Digital Innovation Webinar
+                        </li>
+                        <li class="p-3 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                            <span class="text-xs text-sky-400 font-semibold block">2023</span>
+                            Dahlan Muda Mengabdi: Community Empowerment Towards Progressive Indonesia
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-6">
+                    <h3 class="text-base font-bold text-indigo-400 uppercase tracking-wider mb-4">Training & Certifications</h3>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="p-3 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                            <span class="text-xs text-indigo-400 font-semibold block">2024</span>
+                            Soft Skills Training Stage 1 & Baitul Arqam
+                        </li>
+                        <li class="p-3 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                            <span class="text-xs text-indigo-400 font-semibold block">2023</span>
+                            Campus Orientation & Training Program (P2K)
+                        </li>
+                        <li class="p-3 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                            <span class="text-xs text-emerald-400 font-semibold block">Certification</span>
+                            Al-Islam dan Kemuhammadiyahan (AIK) Certification
+                        </li>
+                        <li class="p-3 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                            <span class="text-xs text-emerald-400 font-semibold block">Certification</span>
+                            Tahsinul Qur'an & Umrah Guidance Certification
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- English Assignments Section -->
-    <section id="english-assignments" class="py-20 bg-dark-card/30 border-t border-dark-border">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-14">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-indigo-400 tracking-tight">
+    <section id="assignments" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-800/70 bg-gradient-to-b from-slate-950 to-[#0B1120]">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-sky-300 to-indigo-300">
                     English Assignments
                 </h2>
-                <p class="text-gray-400 mt-3 text-sm sm:text-base">
+                <p class="text-slate-400 text-sm sm:text-base mt-2">
                     A collection of English language assignments and learning activities.
                 </p>
             </div>
 
+            <!-- 2-Column Clean Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- Card 1: PDF Document (Ujian Tengah Semester Part A) -->
-                <div onclick="openPdfModal()" class="cursor-pointer rounded-2xl bg-[#111827] border border-dark-border hover:border-brand-500/60 overflow-hidden shadow-lg hover:shadow-brand-500/10 transition-all duration-300 group flex flex-col">
-                    <!-- Top Light/White Thumbnail Area matching reference -->
-                    <div class="relative h-56 bg-gradient-to-b from-white to-gray-200 flex items-center justify-center overflow-hidden">
-                        <div class="relative flex flex-col items-center justify-center transform group-hover:scale-105 transition-transform duration-300">
-                            <i class="fa-regular fa-file-lines text-8xl text-gray-800"></i>
-                            <span class="absolute -left-4 bottom-4 px-3 py-1 rounded-md bg-red-600 text-white font-extrabold text-lg tracking-wider shadow-md">
+                
+                <!-- Card 1: Ujian Tengah Semester (Part A) - PDF Card -->
+                <div onclick="openPdfModal()" role="button" tabindex="0" class="group cursor-pointer rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 card-hover flex flex-col">
+                    <!-- White Thumbnail with PDF Icon -->
+                    <div class="h-52 bg-white flex flex-col items-center justify-center relative overflow-hidden">
+                        <div class="relative flex items-center justify-center transform group-hover:scale-105 transition duration-300">
+                            <i class="far fa-file-alt text-slate-800 text-7xl"></i>
+                            <span class="absolute -left-4 bottom-2 bg-red-600 text-white font-extrabold text-sm px-2.5 py-1 rounded shadow-md tracking-wider">
                                 PDF
                             </span>
                         </div>
-                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                            <span class="opacity-0 group-hover:opacity-100 transition-opacity px-4 py-2 rounded-full bg-gray-900/90 text-white text-xs font-semibold flex items-center gap-2 shadow-lg">
-                                <i class="fa-solid fa-eye text-brand-400"></i> Preview Document
-                            </span>
-                        </div>
+                        <span class="mt-3 text-xs font-semibold text-slate-500 group-hover:text-red-600 transition">
+                            Click to view Application Letter
+                        </span>
                     </div>
-                    <!-- Bottom Dark Caption Area -->
-                    <div class="p-5 bg-[#0f1623] border-t border-dark-border flex-1 flex flex-col justify-between">
+                    <!-- Card Footer -->
+                    <div class="p-5 bg-[#161E31] flex-1 flex items-center justify-between">
                         <div>
-                            <h3 class="text-base sm:text-lg font-bold text-white uppercase tracking-wide group-hover:text-brand-400 transition-colors">
-                                Ujian Tengah Semester (Part A)
+                            <h3 class="text-base font-bold text-white group-hover:text-sky-400 transition">
+                                UJIAN TENGAH SEMESTER (Part A)
                             </h3>
-                            <p class="text-xs text-gray-400 mt-1">Application Letter • English Midterm Examination</p>
+                            <p class="text-xs text-slate-400 mt-1">Application Letter Document</p>
                         </div>
-                        <div class="mt-4 flex items-center justify-between text-xs text-brand-400 font-medium">
-                            <span>Click to view document</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        <span class="w-8 h-8 rounded-full bg-slate-800 group-hover:bg-sky-500/20 text-slate-300 group-hover:text-sky-400 flex items-center justify-center transition">
+                            <i class="fas fa-eye text-xs"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Ujian Tengah Semester (Part B) - YouTube Card -->
+                <div class="rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 card-hover flex flex-col">
+                    <!-- Embedded YouTube Video -->
+                    <div class="h-52 w-full bg-black relative">
+                        <iframe 
+                            class="w-full h-full"
+                            src="https://www.youtube.com/embed/3ndF7rIrMuc" 
+                            title="UJIAN TENGAH SEMESTER (Part B)" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <!-- Card Footer -->
+                    <div class="p-5 bg-[#161E31] flex-1 flex items-center justify-between gap-3">
+                        <div>
+                            <h3 class="text-base font-bold text-white">
+                                UJIAN TENGAH SEMESTER (Part B)
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-1">Video Presentation</p>
                         </div>
+                        <a href="https://youtu.be/3ndF7rIrMuc?si=dcIhVjYspXCLSmXl" target="_blank" rel="noopener noreferrer" class="shrink-0 px-3 py-1.5 rounded-lg bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/30 text-xs font-semibold transition flex items-center gap-1.5">
+                            <i class="fab fa-youtube"></i> Watch
+                        </a>
                     </div>
                 </div>
-    <!-- Document Viewer Modal for Ujian Tengah Semester (Part A) -->
-    <div id="pdf-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-        <div class="bg-dark-card border border-dark-border rounded-2xl max-w-3xl w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl">
-            <!-- Modal Header -->
-            <div class="flex items-center justify-between px-6 py-4 border-b border-dark-border bg-gray-900 shrink-0">
-                <div class="flex items-center gap-3">
-                    <span class="px-2.5 py-1 rounded bg-red-600 text-white text-xs font-bold">PDF</span>
-                    <div>
-                        <h3 class="text-base sm:text-lg font-bold text-white leading-tight">Ujian Tengah Semester (Part A)</h3>
-                        <p class="text-xs text-gray-400">Application Letter — Junior Backend Developer</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-2">
-                    <button onclick="copyLetterText()" class="px-3 py-1.5 rounded-lg bg-brand-500/10 hover:bg-brand-500/20 text-brand-400 border border-brand-500/30 text-xs font-semibold transition-all flex items-center gap-1.5">
-                        <i class="fa-regular fa-copy"></i> <span class="hidden sm:inline">Copy Text</span>
-                    </button>
-                    <button onclick="closePdfModal()" class="w-8 h-8 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white flex items-center justify-center transition-colors" aria-label="Close modal">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-            </div>
 
-            <!-- Scrollable Document Paper Body -->
-            <div class="p-4 sm:p-8 bg-gray-950/80 overflow-y-auto flex-1">
-                <div id="application-letter-content" class="bg-white text-gray-900 rounded-xl shadow-xl p-6 sm:p-10 max-w-2xl mx-auto font-sans text-sm sm:text-[15px] leading-relaxed space-y-5 border border-gray-200">
-                    <!-- Sender Header -->
-                    <div class="border-b border-gray-200 pb-4">
-                        <h4 class="text-lg sm:text-xl font-bold text-gray-900">Muhammad Arif Febrian</h4>
-                        <p class="text-gray-600">Yogyakarta, Indonesia</p>
-                        <p class="text-gray-600">
-                            <a href="mailto:2300018274@webmail.uad.ac.id" class="text-sky-700 hover:underline">2300018274@webmail.uad.ac.id</a> | +62 815-7822-6855
-                        </p>
-                    </div>
-
-                    <!-- Date -->
-                    <p class="text-gray-700 font-medium">November 12, 2026</p>
-
-                    <!-- Recipient Address -->
-                    <div class="text-gray-800">
-                        <p class="font-semibold">Human Resources Manager</p>
-                        <p>TechNova Digital Solutions</p>
-                        <p>Yogyakarta, Indonesia</p>
-                    </div>
-
-                    <!-- Subject -->
-                    <p class="font-bold text-gray-900 bg-gray-100 px-3.5 py-2 rounded-lg border-l-4 border-sky-600">
-                        Subject: Application for Junior Backend Developer Position
-                    </p>
-
-                    <!-- Salutation -->
-                    <p class="text-gray-800">Dear Hiring Manager,</p>
-
-                    <!-- Body Paragraphs -->
-                    <p class="text-gray-800 text-justify">
-                        I am writing to express my strong interest in the Junior Backend Developer position at TechNova Digital Solutions. As a seventh-semester Informatics Engineering student at Universitas Ahmad Dahlan with comprehensive hands-on experience in both technical operations and software backend development, I am eager to bring a well-rounded skill set to your development team.
-                    </p>
-
-                    <p class="text-gray-800 text-justify">
-                        My practical background stems from two key experiences. Previously, I completed an industry internship at Pitstop Computer Yogyakarta as a Hardware &amp; Software Specialist, where I handled system installations, data processing, inventory tracking, and technical verification. Building upon this foundation, I further expanded my software engineering expertise this semester by serving as the Backend Programmer for the Dusun Pripih Dynamic Information System project with CIVITAS Tech.
-                    </p>
-
-                    <p class="text-gray-800 text-justify">
-                        In my recent web project, I designed relational database schemas using SQL, built robust backend business logic using PHP, developed RESTful APIs, and integrated database operations with frontend components. My key contributions included implementing secure admin authentication with session management, managing full CRUD operations with image uploads for news and local MSME (UMKM) catalogs, and engineering a real-time tracking system for citizen complaints while applying structured problem-solving and version control via Git/GitHub.
-                    </p>
-
-                    <p class="text-gray-800 text-justify">
-                        My combination of structured troubleshooting from IT operations and robust backend web development directly aligns with TechNova Digital Solutions' commitment to delivering reliable technology solutions.
-                    </p>
-
-                    <p class="text-gray-800 text-justify">
-                        You can review my professional background, project repositories, and introduction video on my portfolio website:
-                        <a href="https://febrian6969.github.io/Web_Portofolio/" target="_blank" rel="noopener noreferrer" class="text-sky-700 font-semibold hover:underline break-all">
-                            https://febrian6969.github.io/Web_Portofolio/
-                        </a>.
-                    </p>
-
-                    <p class="text-gray-800">
-                        Thank you for your time and consideration. I look forward to discussing how my technical background can add value to your team.
-                    </p>
-
-                    <!-- Sign-off -->
-                    <div class="pt-2">
-                        <p class="text-gray-800">Sincerely,</p>
-                        <p class="font-bold text-gray-900 mt-4">Muhammad Arif Febrian</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Modal Footer -->
-            <div class="px-6 py-3.5 border-t border-dark-border bg-gray-900 flex items-center justify-between shrink-0">
-                <span class="text-xs text-gray-400">Ujian Tengah Semester (Part A)</span>
-                <button onclick="closePdfModal()" class="px-4 py-2 rounded-xl bg-gray-800 hover:bg-gray-700 text-white text-xs font-semibold transition-colors">
-                    Close Document
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-dark-card/50 border-y border-dark-border">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold text-white tracking-tight">Technical & Soft Skills</h2>
-                <div class="w-16 h-1 bg-brand-500 mx-auto mt-3 rounded-full"></div>
-                <p class="text-gray-400 mt-3 text-sm sm:text-base">Core programming skills, developer tools, and essential interpersonal capabilities.</p>
-            </div>
-
-            <!-- Coding Skills Section -->
-            <div class="mb-14">
-                <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                    <i class="fa-solid fa-code text-brand-400"></i> Programming & Web Development
-                </h3>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
-                    <div class="p-4 rounded-xl bg-dark-card border border-dark-border text-center hover:border-brand-500/50 transition-all group">
-                        <i class="fa-brands fa-html5 text-3xl text-orange-500 mb-2 group-hover:scale-110 transition-transform"></i>
-                        <h4 class="text-sm font-bold text-white">HTML5</h4>
-                        <span class="text-[10px] text-gray-400">Web Fundamentals</span>
-                    </div>
-
-                    <div class="p-4 rounded-xl bg-dark-card border border-dark-border text-center hover:border-brand-500/50 transition-all group">
-                        <i class="fa-brands fa-css3-alt text-3xl text-blue-500 mb-2 group-hover:scale-110 transition-transform"></i>
-                        <h4 class="text-sm font-bold text-white">CSS3</h4>
-                        <span class="text-[10px] text-gray-400">Styling & Layout</span>
-                    </div>
-
-                    <div class="p-4 rounded-xl bg-dark-card border border-dark-border text-center hover:border-brand-500/50 transition-all group">
-                        <i class="fa-brands fa-js text-3xl text-yellow-400 mb-2 group-hover:scale-110 transition-transform"></i>
-                        <h4 class="text-sm font-bold text-white">JavaScript</h4>
-                        <span class="text-[10px] text-gray-400">Client Scripting</span>
-                    </div>
-
-                    <div class="p-4 rounded-xl bg-dark-card border border-dark-border text-center hover:border-brand-500/50 transition-all group">
-                        <i class="fa-brands fa-php text-3xl text-indigo-400 mb-2 group-hover:scale-110 transition-transform"></i>
-                        <h4 class="text-sm font-bold text-white">PHP</h4>
-                        <span class="text-[10px] text-gray-400">Backend Logic</span>
-                    </div>
-
-                    <div class="p-4 rounded-xl bg-dark-card border border-dark-border text-center hover:border-brand-500/50 transition-all group">
-                        <i class="fa-solid fa-code text-3xl text-cyan-400 mb-2 group-hover:scale-110 transition-transform"></i>
-                        <h4 class="text-sm font-bold text-white">C++</h4>
-                        <span class="text-[10px] text-gray-400">Algorithms & DS</span>
-                    </div>
-
-                    <div class="p-4 rounded-xl bg-dark-card border border-dark-border text-center hover:border-brand-500/50 transition-all group">
-                        <i class="fa-solid fa-database text-3xl text-emerald-400 mb-2 group-hover:scale-110 transition-transform"></i>
-                        <h4 class="text-sm font-bold text-white">SQL</h4>
-                        <span class="text-[10px] text-gray-400">Database Queries</span>
-                    </div>
-
-                    <div class="p-4 rounded-xl bg-dark-card border border-dark-border text-center hover:border-brand-500/50 transition-all group">
-                        <i class="fa-brands fa-git-alt text-3xl text-red-500 mb-2 group-hover:scale-110 transition-transform"></i>
-                        <h4 class="text-sm font-bold text-white">Git / GitHub</h4>
-                        <span class="text-[10px] text-gray-400">Version Control</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Soft & General Skills -->
-            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                <i class="fa-solid fa-gears text-brand-400"></i> Soft Skills & Productivity
-            </h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Skill 1 -->
-                <div class="p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-brand-500/40 transition-all text-center">
-                    <div class="w-16 h-16 rounded-2xl bg-brand-500/10 text-brand-400 flex items-center justify-center text-3xl mx-auto mb-4">
-                        <i class="fa-solid fa-brain"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white">Problem Solving</h3>
-                    <p class="text-xs text-gray-400 mt-2 leading-relaxed">
-                        Adept at analyzing technical issues, diagnosing hardware/software failures, and crafting structured solutions.
-                    </p>
-                </div>
-
-                <!-- Skill 2 -->
-                <div class="p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-brand-500/40 transition-all text-center">
-                    <div class="w-16 h-16 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-3xl mx-auto mb-4">
-                        <i class="fa-solid fa-file-excel"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white">Microsoft Office Suite</h3>
-                    <p class="text-xs text-gray-400 mt-2 leading-relaxed">
-                        High proficiency in MS Word (formatting & academic writing), Excel (data analytics), and PowerPoint (presentations).
-                    </p>
-                </div>
-
-                <!-- Skill 3 -->
-                <div class="p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-brand-500/40 transition-all text-center">
-                    <div class="w-16 h-16 rounded-2xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-3xl mx-auto mb-4">
-                        <i class="fa-solid fa-sliders"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white">Adaptability & Self-Management</h3>
-                    <p class="text-xs text-gray-400 mt-2 leading-relaxed">
-                        Quick learner capable of adapting to new technologies, working in team settings, and managing tasks effectively.
-                    </p>
-                </div>
             </div>
         </div>
     </section>
-
-    <!-- Seminars & Training Section -->
-    <section id="certificates" class="py-20">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <h2 class="text-3xl font-bold text-white tracking-tight">Seminars, Training & Certifications</h2>
-                <div class="w-16 h-1 bg-brand-500 mx-auto mt-3 rounded-full"></div>
-                <p class="text-gray-400 mt-3 text-sm sm:text-base">Continuous self-development through academic seminars, technical workshops, and certifications.</p>
-            </div>
-
-            <!-- Tab Buttons -->
-            <div class="flex justify-center gap-3 mb-10">
-                <button id="btn-seminar" onclick="switchTab('seminar')" class="tab-btn active px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-brand-500 text-white shadow-lg">
-                    <i class="fa-solid fa-chalkboard-user mr-2"></i> Seminars & Webinars
-                </button>
-                <button id="btn-pelatihan" onclick="switchTab('pelatihan')" class="tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-gray-800 text-gray-400 hover:text-white">
-                    <i class="fa-solid fa-certificate mr-2"></i> Training & Certifications
-                </button>
-            </div>
-
-            <!-- Tab Content: Seminar -->
-            <div id="tab-seminar" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="p-5 rounded-2xl bg-dark-card border border-dark-border flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-400 flex items-center justify-center shrink-0 mt-1">
-                        <i class="fa-solid fa-people-group"></i>
-                    </div>
-                    <div>
-                        <span class="text-[11px] font-bold text-brand-400">2023</span>
-                        <h4 class="text-base font-bold text-white mt-0.5">Dahlan Muda Mengabdi</h4>
-                        <p class="text-xs text-gray-400 mt-1">The Role of Dahlan Muda in Community Empowerment Towards a Progressive Indonesia.</p>
-                    </div>
-                </div>
-
-                <div class="p-5 rounded-2xl bg-dark-card border border-dark-border flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0 mt-1">
-                        <i class="fa-solid fa-chart-line"></i>
-                    </div>
-                    <div>
-                        <span class="text-[11px] font-bold text-cyan-400">2024</span>
-                        <h4 class="text-base font-bold text-white mt-0.5">Business Plan Seminar</h4>
-                        <p class="text-xs text-gray-400 mt-1">Next Gen Entrepreneurship Competition #2.</p>
-                    </div>
-                </div>
-
-                <div class="p-5 rounded-2xl bg-dark-card border border-dark-border flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0 mt-1">
-                        <i class="fa-solid fa-lightbulb"></i>
-                    </div>
-                    <div>
-                        <span class="text-[11px] font-bold text-purple-400">2024</span>
-                        <h4 class="text-base font-bold text-white mt-0.5">Digital Innovation Webinar</h4>
-                        <p class="text-xs text-gray-400 mt-1">Exploration of contemporary digital transformation trends and technology innovation.</p>
-                    </div>
-                </div>
-
-                <div class="p-5 rounded-2xl bg-dark-card border border-dark-border flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 mt-1">
-                        <i class="fa-solid fa-book-open-reader"></i>
-                    </div>
-                    <div>
-                        <span class="text-[11px] font-bold text-emerald-400">2026</span>
-                        <h4 class="text-base font-bold text-white mt-0.5">Information Literacy Training</h4>
-                        <p class="text-xs text-gray-400 mt-1">Optimization of Microsoft Word & Similarity Check - Universitas Ahmad Dahlan Library.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tab Content: Pelatihan -->
-            <div id="tab-pelatihan" class="hidden grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="p-5 rounded-2xl bg-dark-card border border-dark-border flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0 mt-1">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
-                    <div>
-                        <span class="text-[11px] font-bold text-amber-400">2023</span>
-                        <h4 class="text-base font-bold text-white mt-0.5">Campus Training Program (P2K)</h4>
-                        <p class="text-xs text-gray-400 mt-1">Orientation and foundational soft skills training for campus academic life at UAD.</p>
-                    </div>
-                </div>
-
-                <div class="p-5 rounded-2xl bg-dark-card border border-dark-border flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center shrink-0 mt-1">
-                        <i class="fa-solid fa-user-gear"></i>
-                    </div>
-                    <div>
-                        <span class="text-[11px] font-bold text-rose-400">2024</span>
-                        <h4 class="text-base font-bold text-white mt-0.5">Soft Skills Training Stage 1</h4>
-                        <p class="text-xs text-gray-400 mt-1">Focusing on personal effectiveness, communication, leadership, and emotional intelligence.</p>
-                    </div>
-                </div>
-
-                <div class="p-5 rounded-2xl bg-dark-card border border-dark-border flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center shrink-0 mt-1">
-                        <i class="fa-solid fa-mosque"></i>
-                    </div>
-                    <div>
-                        <span class="text-[11px] font-bold text-teal-400">2024</span>
-                        <h4 class="text-base font-bold text-white mt-0.5">Baitul Arqam</h4>
-                        <p class="text-xs text-gray-400 mt-1">Character development and leadership values in Kemuhammadiyahan.</p>
-                    </div>
-                </div>
-
-                <div class="p-5 rounded-2xl bg-dark-card border border-dark-border flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center shrink-0 mt-1">
-                        <i class="fa-solid fa-award"></i>
-                    </div>
-                    <div>
-                        <span class="text-[11px] font-bold text-indigo-400">Certifications</span>
-                        <h4 class="text-base font-bold text-white mt-0.5">AIK & Tahsin Certifications</h4>
-                        <p class="text-xs text-gray-400 mt-1">Islamic & Kemuhammadiyahan (AIK) Certification, Tahsinul Qur'an Certification & Umrah Guidance Training.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-dark-card/50 border-t border-dark-border">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-dark-card via-gray-900 to-dark-card border border-dark-border text-center relative overflow-hidden">
-                <div class="absolute -top-24 -left-24 w-60 h-60 bg-brand-500/10 rounded-full blur-3xl"></div>
-                <div class="absolute -bottom-24 -right-24 w-60 h-60 bg-cyan-500/10 rounded-full blur-3xl"></div>
-
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Let's Connect & Work Together</h2>
-                <p class="text-gray-400 max-w-xl mx-auto mt-3 text-sm sm:text-base">
-                    Interested in collaborating on web development projects, hardware technical roles, or career opportunities?
-                </p>
-
-                <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-                    <button onclick="copyToClipboard('2300018274@webmail.uad.ac.id', 'Email copied to clipboard!')" class="px-6 py-3 rounded-xl bg-dark-bg border border-dark-border hover:border-brand-500 text-white text-sm font-semibold transition-all flex items-center gap-2">
-                        <i class="fa-solid fa-copy text-brand-400"></i>
-                        <span>2300018274@webmail.uad.ac.id</span>
-                    </button>
-                    <a href="https://wa.me/6281578226855" target="_blank" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition-all flex items-center gap-2">
-                        <i class="fa-brands fa-whatsapp text-lg"></i>
-                        <span>+62 815-7822-6855</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Notification Toast -->
-    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-brand-500 text-white px-5 py-3 rounded-xl shadow-xl flex items-center gap-3">
-        <i class="fa-solid fa-circle-check"></i>
-        <span id="toast-msg" class="text-sm font-medium">Text copied</span>
-    </div>
 
     <!-- Footer -->
-    <footer class="py-8 border-t border-dark-border text-center text-xs text-gray-500">
-        <div class="max-w-6xl mx-auto px-4">
-            <p>© 2026 Muhammad Arif Febrian. All Rights Reserved.</p>
-            <p class="mt-1">Informatics - Universitas Ahmad Dahlan Yogyakarta</p>
-        </div>
+    <footer class="py-8 px-4 border-t border-slate-800/80 text-center text-xs text-slate-500">
+        <p>&copy; 2026 Muhammad Arif Febrian. Built for Academic & Professional Portfolio.</p>
     </footer>
 
-    <!-- Interactive Scripts -->
-    <script>
-        // Mobile Navigation Toggle
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
+    <!-- Modal Popup for Ujian Tengah Semester (Part A) -->
+    <div id="pdfModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm p-4 items-center justify-center">
+        <div class="bg-white text-slate-900 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[88vh]">
+            <!-- Modal Header -->
+            <div class="px-6 py-4 bg-slate-900 text-white flex items-center justify-between shrink-0">
+                <div class="flex items-center gap-2.5">
+                    <span class="bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded">PDF</span>
+                    <h3 class="font-bold text-sm sm:text-base">Ujian Tengah Semester (Part A)</h3>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button id="copyLetterBtn" onclick="copyLetterText()" type="button" class="px-3 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 text-xs font-bold transition flex items-center gap-1.5">
+                        <i class="fas fa-copy"></i> Copy Text
+                    </button>
+                    <button onclick="closePdfModal()" type="button" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-red-600 text-white flex items-center justify-center transition">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
 
-        menuBtn.addEventListener('click', () => {
+            <!-- Modal Body (Scrollable Document Paper) -->
+            <div id="letterContent" class="p-6 sm:p-8 overflow-y-auto text-sm leading-relaxed text-slate-800 space-y-4 font-sans">
+                <div class="border-b border-slate-200 pb-4">
+                    <p class="font-bold text-base text-slate-900">Muhammad Arif Febrian</p>
+                    <p>Yogyakarta, Indonesia</p>
+                    <p>2300018274@webmail.uad.ac.id | +62 815-7822-6855</p>
+                </div>
+
+                <p>November 12, 2026</p>
+
+                <div>
+                    <p class="font-semibold">Human Resources Manager</p>
+                    <p>TechNova Digital Solutions</p>
+                    <p>Yogyakarta, Indonesia</p>
+                </div>
+
+                <p class="font-bold text-slate-900">Subject: Application for Junior Backend Developer Position</p>
+
+                <p>Dear Hiring Manager,</p>
+
+                <p>
+                    I am writing to express my strong interest in the Junior Backend Developer position at TechNova Digital Solutions. As a seventh-semester Informatics Engineering student at Universitas Ahmad Dahlan with comprehensive hands-on experience in both technical operations and software backend development, I am eager to bring a well-rounded skill set to your development team.
+                </p>
+
+                <p>
+                    My practical background stems from two key experiences. Previously, I completed an industry internship at Pitstop Computer Yogyakarta as a Hardware &amp; Software Specialist, where I handled system installations, data processing, inventory tracking, and technical verification. Building upon this foundation, I further expanded my software engineering expertise this semester by serving as the Backend Programmer for the Dusun Pripih Dynamic Information System project with CIVITAS Tech.
+                </p>
+
+                <p>
+                    In my recent web project, I designed relational database schemas using SQL, built robust backend business logic using PHP, developed RESTful APIs, and integrated database operations with frontend components. My key contributions included implementing secure admin authentication with session management, managing full CRUD operations with image uploads for news and local MSME (UMKM) catalogs, and engineering a real-time tracking system for citizen complaints while applying structured problem-solving and version control via Git/GitHub.
+                </p>
+
+                <p>
+                    My combination of structured troubleshooting from IT operations and robust backend web development directly aligns with TechNova Digital Solutions' commitment to delivering reliable technology solutions.
+                </p>
+
+                <p>
+                    You can review my professional background, project repositories, and introduction video on my portfolio website: 
+                    <a href="https://febrian6969.github.io/Web_Portofolio/" target="_blank" rel="noopener noreferrer" class="text-sky-600 underline font-medium break-all">https://febrian6969.github.io/Web_Portofolio/</a>.
+                </p>
+
+                <p>
+                    Thank you for your time and consideration. I look forward to discussing how my technical background can add value to your team.
+                </p>
+
+                <div class="pt-2">
+                    <p>Sincerely,</p>
+                    <p class="font-bold text-slate-900 mt-4">Muhammad Arif Febrian</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
+        // Modal controls
+        const pdfModal = document.getElementById('pdfModal');
 
-        // Tab Switching for Seminars & Pelatihan
-        function switchTab(tabName) {
-            const seminarTab = document.getElementById('tab-seminar');
-            const pelatihanTab = document.getElementById('tab-pelatihan');
-            const btnSeminar = document.getElementById('btn-seminar');
-            const btnPelatihan = document.getElementById('btn-pelatihan');
-
-            if (tabName === 'seminar') {
-                seminarTab.classList.remove('hidden');
-                pelatihanTab.classList.add('hidden');
-
-                btnSeminar.className = 'tab-btn active px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-brand-500 text-white shadow-lg';
-                btnPelatihan.className = 'tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-gray-800 text-gray-400 hover:text-white';
-            } else {
-                seminarTab.classList.add('hidden');
-                pelatihanTab.classList.remove('hidden');
-
-                btnPelatihan.className = 'tab-btn active px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-brand-500 text-white shadow-lg';
-                btnSeminar.className = 'tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-gray-800 text-gray-400 hover:text-white';
-            }
-        }
-
-        // Copy to clipboard helper
-        function copyToClipboard(text, message) {
-            const dummy = document.createElement('textarea');
-            document.body.appendChild(dummy);
-            dummy.value = text;
-            dummy.select();
-            document.execCommand('copy');
-            document.body.removeChild(dummy);
-
-            showToast(message);
-        }
-
-        // Show Toast Notification
-        function showToast(msg) {
-            const toast = document.getElementById('toast');
-            const toastMsg = document.getElementById('toast-msg');
-            toastMsg.textContent = msg;
-
-            toast.classList.remove('translate-y-20', 'opacity-0');
-            toast.classList.add('translate-y-0', 'opacity-100');
-
-            setTimeout(() => {
-                toast.classList.remove('translate-y-0', 'opacity-100');
-                toast.classList.add('translate-y-20', 'opacity-0');
-            }, 3000);
-        }
-
-        // PDF Modal Controls
         function openPdfModal() {
-            const modal = document.getElementById('pdf-modal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
+            pdfModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
         }
 
         function closePdfModal() {
-            const modal = document.getElementById('pdf-modal');
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
+            pdfModal.classList.add('hidden');
+            document.body.style.overflow = '';
         }
 
-        // Close modal when clicking outside dialog
-        document.getElementById('pdf-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
+        // Close modal when clicking outside dialog box
+        pdfModal.addEventListener('click', (e) => {
+            if (e.target === pdfModal) {
                 closePdfModal();
             }
         });
 
-        // Copy full Application Letter text to clipboard
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !pdfModal.classList.contains('hidden')) {
+                closePdfModal();
+            }
+        });
+
+        // Copy letter text
         function copyLetterText() {
-            const letterText = `Muhammad Arif Febrian
-Yogyakarta, Indonesia
-2300018274@webmail.uad.ac.id | +62 815-7822-6855
-
-November 12, 2026
-
-Human Resources Manager
-TechNova Digital Solutions
-Yogyakarta, Indonesia
-
-Subject: Application for Junior Backend Developer Position
-
-Dear Hiring Manager,
-
-I am writing to express my strong interest in the Junior Backend Developer position at TechNova Digital Solutions. As a seventh-semester Informatics Engineering student at Universitas Ahmad Dahlan with comprehensive hands-on experience in both technical operations and software backend development, I am eager to bring a well-rounded skill set to your development team.
-
-My practical background stems from two key experiences. Previously, I completed an industry internship at Pitstop Computer Yogyakarta as a Hardware & Software Specialist, where I handled system installations, data processing, inventory tracking, and technical verification. Building upon this foundation, I further expanded my software engineering expertise this semester by serving as the Backend Programmer for the Dusun Pripih Dynamic Information System project with CIVITAS Tech.
-
-In my recent web project, I designed relational database schemas using SQL, built robust backend business logic using PHP, developed RESTful APIs, and integrated database operations with frontend components. My key contributions included implementing secure admin authentication with session management, managing full CRUD operations with image uploads for news and local MSME (UMKM) catalogs, and engineering a real-time tracking system for citizen complaints while applying structured problem-solving and version control via Git/GitHub.
-
-My combination of structured troubleshooting from IT operations and robust backend web development directly aligns with TechNova Digital Solutions' commitment to delivering reliable technology solutions.
-
-You can review my professional background, project repositories, and introduction video on my portfolio website: https://febrian6969.github.io/Web_Portofolio/.
-
-Thank you for your time and consideration. I look forward to discussing how my technical background can add value to your team.
-
-Sincerely,
-
-Muhammad Arif Febrian`;
-            copyToClipboard(letterText, 'Application Letter copied to clipboard!');
+            const text = document.getElementById('letterContent').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById('copyLetterBtn');
+                btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-copy"></i> Copy Text';
+                }, 2000);
+            });
         }
     </script>
 </body>
